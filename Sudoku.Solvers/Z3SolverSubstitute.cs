@@ -4,7 +4,7 @@ namespace Sudoku.Solvers;
 using Microsoft.Z3;
 using Sudoku.Shared;
 
-public class BacktrackingZ3SolverSubstitute : ISudokuSolver
+public class Z3SolverSubstitute : ISudokuSolver
 {
     public SudokuGrid Solve(SudokuGrid s)
     {

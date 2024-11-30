@@ -2,7 +2,7 @@
 using Microsoft.Z3;
 using Sudoku.Shared;
 
-public class BacktrackingZ3BitVectSolver : ISudokuSolver
+public class Z3BitVectSubstituteSolver : ISudokuSolver
 {
     public SudokuGrid Solve(SudokuGrid s)
     {
@@ -71,7 +71,9 @@ public class BacktrackingZ3BitVectSolver : ISudokuSolver
                 {
                     if (s.Cells[i, j] != 0)
                     {
-                        z3Solver.Add(ctx.MkEq(z3Grid[i, j], ctx.MkBV(s.Cells[i, j], 4)));
+                        BoolExpr constraint = ctx.MkEq(z3Grid[i, j], ctx.MkInt(s.Cells[i, j]));
+                        constraint.Substitute(z3Grid[i, j], ctx.MkInt(s.Cells[i, j]));
+                        z3Solver.Add(constraint);
                     }
                 }
             }

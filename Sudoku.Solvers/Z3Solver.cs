@@ -2,7 +2,7 @@
 using Microsoft.Z3;
 using Sudoku.Shared;
 
-public class BacktrackingZ3Solver : ISudokuSolver
+public class Z3Solver : ISudokuSolver
 {
     public SudokuGrid Solve(SudokuGrid s)
     {
