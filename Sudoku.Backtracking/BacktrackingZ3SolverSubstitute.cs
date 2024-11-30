@@ -1,8 +1,10 @@
-﻿namespace Sudoku.Backtracking;
+﻿using System.Data;
+
+namespace Sudoku.Backtracking;
 using Microsoft.Z3;
 using Sudoku.Shared;
 
-public class BacktrackingZ3Solver : ISudokuSolver
+public class BacktrackingZ3SolverSubstitute : ISudokuSolver
 {
     public SudokuGrid Solve(SudokuGrid s)
     {
@@ -71,7 +73,9 @@ public class BacktrackingZ3Solver : ISudokuSolver
                 {
                     if (s.Cells[i, j] != 0)
                     {
-                        z3Solver.Add(ctx.MkEq(z3Grid[i, j],ctx.MkInt(s.Cells[i, j])));
+                        BoolExpr constraint = ctx.MkEq(z3Grid[i, j], ctx.MkInt(s.Cells[i, j]));
+                        constraint.Substitute(z3Grid[i, j], ctx.MkInt(s.Cells[i, j]));
+                        z3Solver.Add(constraint);
                     }
                 }
                 
