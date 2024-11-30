@@ -165,7 +165,6 @@ namespace Sudoku.Benchmark
         }
 
 
-
         private static void SingleSolverTest()
         {
             var solvers = Shared.SudokuGrid.GetSolvers();

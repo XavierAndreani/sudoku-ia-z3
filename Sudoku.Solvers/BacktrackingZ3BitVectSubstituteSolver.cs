@@ -1,4 +1,4 @@
-﻿namespace Sudoku.Backtracking;
+﻿namespace Sudoku.Solvers;
 using Microsoft.Z3;
 using Sudoku.Shared;
 
